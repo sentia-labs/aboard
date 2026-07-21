@@ -1,0 +1,14 @@
+{
+  "name": "aboard",
+  "version": "1.0.0",
+  "description": "Lightweight coordination system for local coding-agent sessions: manage, onboard, and offboard aboard coordinator/worker sessions.",
+  "skills": "./skills/",
+  "mcpServers": [
+    {
+      "name": "aboard-mcp",
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/dist/cli/mcp.js"]
+    }
+  ]
+}
+

@@ -1,0 +1,39 @@
+{
+  "name": "aboard",
+  "version": "1.0.0",
+  "description": "Lightweight coordination system for local coding-agent sessions",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "aboard-server": "./dist/cli/server.js",
+    "aboard-mcp": "./dist/cli/mcp.js"
+  },
+  "files": [
+    "dist",
+    "skills",
+    ".claude-plugin"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev:server": "tsx src/cli/server.ts",
+    "dev:mcp": "tsx src/cli/mcp.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.0.11",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "hono": "^4.12.31",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^4.1.10"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
