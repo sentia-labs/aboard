@@ -7,7 +7,7 @@
     {
       "name": "aboard-mcp",
       "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/dist/cli/mcp.js"]
+      "args": ["${CLAUDE_PLUGIN_ROOT}/bin/aboard-mcp.js"]
     }
   ]
 }

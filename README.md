@@ -46,13 +46,33 @@ bundling three skills and the `aboard-mcp` server:
 - `/onboard [topic]` — register the current session as a worker.
 - `/offboard [message]` — remove this session's worker registration.
 
+## No build step
+
+This is a pure TypeScript repo with no compile-to-`dist` step, in or out of
+development. `aboard-server` and `aboard-mcp` are `.ts` files under `src/cli`,
+run directly at install time via [`tsx`](https://tsx.is) (a regular
+`dependencies` entry, not a devDependency). The two files under `bin/` are
+tiny plain-JS bootstraps — `npm`'s bin shims must point at something Node can
+exec directly, so each one registers `tsx`'s ESM loader and then imports the
+real `.ts` entrypoint:
+
+```js
+#!/usr/bin/env node
+import { register } from "tsx/esm/api";
+register();
+await import("../src/cli/server.ts");
+```
+
+The published package ships `src/` and `bin/` as-is; nothing is precompiled.
+
 ## Development
 
 ```bash
 npm install
-npm run typecheck   # tsc --noEmit
-npm test            # vitest (unit + integration)
-npm run build       # compile to dist/
+npm run typecheck     # tsc --noEmit
+npm test               # vitest (unit + integration)
+npm run start:server   # node bin/aboard-server.js
+npm run start:mcp       # node bin/aboard-mcp.js
 ```
 
 Tests live under `test/unit` (pure in-memory server state/logic) and

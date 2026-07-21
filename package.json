@@ -5,18 +5,18 @@
   "type": "module",
   "license": "MIT",
   "bin": {
-    "aboard-server": "./dist/cli/server.js",
-    "aboard-mcp": "./dist/cli/mcp.js"
+    "aboard-server": "./bin/aboard-server.js",
+    "aboard-mcp": "./bin/aboard-mcp.js"
   },
   "files": [
-    "dist",
+    "bin",
+    "src",
     "skills",
     ".claude-plugin"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "dev:server": "tsx src/cli/server.ts",
-    "dev:mcp": "tsx src/cli/mcp.ts",
+    "start:server": "node ./bin/aboard-server.js",
+    "start:mcp": "node ./bin/aboard-mcp.js",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc -p tsconfig.json --noEmit"
@@ -25,11 +25,11 @@
     "@hono/node-server": "^2.0.11",
     "@modelcontextprotocol/sdk": "^1.29.0",
     "hono": "^4.12.31",
+    "tsx": "^4.23.1",
     "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
-    "tsx": "^4.19.2",
     "typescript": "^5.7.3",
     "vitest": "^4.1.10"
   },
